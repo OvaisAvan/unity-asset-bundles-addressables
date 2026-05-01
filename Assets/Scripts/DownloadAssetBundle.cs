@@ -18,6 +18,7 @@ public class DownloadAssetBundle : MonoBehaviour
         TypeWanted> callbackFunction, string assetBundleName="")
     {
         dynamic assetBundleLoad = null;
+        TypeWanted typeReceived = TypeWanted.Unknown;
         string url = "https://blackspiderstudios.com/assets/cube_prefab";
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
@@ -30,11 +31,12 @@ public class DownloadAssetBundle : MonoBehaviour
             else
             {
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
-                go = bundle.LoadAsset(bundle.GetAllAssetNames()[0]) as GameObject;
+                assetBundleLoad = bundle.LoadAsset(bundle.GetAllAssetNames()[0]);
                 bundle.Unload(false);
                 yield return new WaitForEndOfFrame();
             }
             www.Dispose();
         }
+        Debug.Log("The asset bundle unloaded is a type of: " + assetBundleLoad);
     }
 }
