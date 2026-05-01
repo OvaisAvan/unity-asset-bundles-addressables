@@ -39,4 +39,30 @@ public class DownloadAssetBundle : MonoBehaviour
         }
         Debug.Log("The asset bundle unloaded is a type of: " + assetBundleLoad);
     }
+
+    private int CheckAssetBundleLoadType(dynamic assetBundleLoad)
+    {
+        TypeWanted typeWanted = TypeWanted.Unknown;
+        if (assetBundleLoad is GameObject)
+        {
+            typeWanted = TypeWanted.GameObject;
+        }
+        else if (assetBundleLoad is Texture2D)
+        {
+            typeWanted = TypeWanted.Texture2D;
+        }
+        else if (assetBundleLoad is AudioClip)
+        {
+            typeWanted = TypeWanted.AudioClip;
+        }
+        else if (assetBundleLoad is Sprite)
+        {
+            typeWanted = TypeWanted.Sprite;
+        }
+        else if (assetBundleLoad is ScriptableObject)
+        {
+            typeWanted = TypeWanted.ScriptableObject;
+        }
+        return (int)typeWanted;
+    }
 }
