@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2175735839
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: cube_prefab
+      Dependencies: {}
