@@ -14,9 +14,10 @@ public class DownloadAssetBundle : MonoBehaviour
         ScriptableObject,
     }
     
-    private IEnumerator DownloadAssetBundleFromServer()
+    private IEnumerator DownloadAssetBundleFromServer(CallBack<dynamic, 
+        TypeWanted> callbackFunction, string assetBundleName="")
     {
-        GameObject go = null;
+        dynamic assetBundleLoad = null;
         string url = "https://blackspiderstudios.com/assets/cube_prefab";
         using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(url))
         {
@@ -34,20 +35,6 @@ public class DownloadAssetBundle : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
             www.Dispose();
-        }
-        InstantiateGameObject(go);
-    }
-    
-    private void InstantiateGameObject(GameObject go)
-    {
-        if (go != null)
-        {
-            GameObject intantiateGo=Instantiate(go);
-            intantiateGo.transform.position = Vector3.zero;
-        }
-        else
-        {
-            Debug.Log("your asset bundle GameObject is null");
         }
     }
 }
