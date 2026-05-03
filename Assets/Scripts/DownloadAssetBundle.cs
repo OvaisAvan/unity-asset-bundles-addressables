@@ -75,12 +75,15 @@ public class DownloadAssetBundle : MonoBehaviour
 
     private void ApplyImportedSpriteFromAssetBundle(Sprite sprite)
     {
-        
+        _myImageLoad.sprite = sprite;
+        _myImageLoad.type = Image.Type.Simple;
+        _myImageLoad.preserveAspect = true;
     }
 
     private void ApplyImportedAudioClipFromAssetBundle(AudioClip clip)
     {
-        
+        _myAudioSourceLoad.clip = clip;
+        _myAudioSourceLoad.Play();
     }
 
     private void InstantiateGameObjectFromAssetBundle(GameObject gameObject)
