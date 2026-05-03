@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,12 @@ public class DownloadAssetBundle : MonoBehaviour
         Sprite,
         ScriptableObject,
     }
-    
+
+    private void Start()
+    {
+        LoadAssetBundle(ActionWantedToAssetBundleLoad);
+    }
+
     private IEnumerator DownloadAssetBundleFromServer(CallBack<dynamic, 
         TypeWanted> callbackFunction, string assetBundleName="")
     {
