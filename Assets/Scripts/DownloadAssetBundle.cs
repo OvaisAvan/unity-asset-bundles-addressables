@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+
 public class DownloadAssetBundle : MonoBehaviour
 {
+    [SerializeField] private Image _myImageLoad;
+    [SerializeField] private AudioSource _myAudioSourceLoad;
+    
     private enum TypeWanted
     {
         Unknown,
@@ -66,5 +71,21 @@ public class DownloadAssetBundle : MonoBehaviour
             typeWanted = TypeWanted.ScriptableObject;
         }
         return (int)typeWanted;
+    }
+
+    private void ApplyImportedSpriteFromAssetBundle(Sprite sprite)
+    {
+        
+    }
+
+    private void ApplyImportedAudioClipFromAssetBundle(AudioClip clip)
+    {
+        
+    }
+
+    private void InstantiateGameObjectFromAssetBundle(GameObject gameObject)
+    {
+        GameObject InstantiateGo = Instantiate(gameObject);
+        InstantiateGo.transform.position = Vector3.zero;
     }
 }
