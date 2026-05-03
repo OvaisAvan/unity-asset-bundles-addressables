@@ -95,7 +95,7 @@ public class DownloadAssetBundle : MonoBehaviour
                 InstantiateGameObjectFromAssetBundle(assetDownload as GameObject);
                 break;
             case TypeWanted.Texture2D:
-                ApplyImportedSpriteFromAssetBundle(assetDownload as Sprite);
+                ApplyImportedSpriteFromAssetBundle(Utils.ConvertTexture2DToSprite(assetDownload as Texture2D));
                 break;
             case TypeWanted.AudioClip:
                 PlayImportedAudioClipFromAssetBundle(assetDownload as AudioClip);
