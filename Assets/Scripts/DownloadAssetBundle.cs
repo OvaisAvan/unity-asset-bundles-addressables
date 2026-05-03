@@ -38,6 +38,8 @@ public class DownloadAssetBundle : MonoBehaviour
             www.Dispose();
         }
         Debug.Log("The asset bundle unloaded is a type of: " + assetBundleLoad);
+        typeReceived = (TypeWanted)CheckAssetBundleLoadType(assetBundleLoad);
+        callbackFunction(assetBundleLoad, typeReceived);
     }
 
     private int CheckAssetBundleLoadType(dynamic assetBundleLoad)
