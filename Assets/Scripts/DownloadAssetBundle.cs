@@ -80,7 +80,7 @@ public class DownloadAssetBundle : MonoBehaviour
         _myImageLoad.preserveAspect = true;
     }
 
-    private void ApplyImportedAudioClipFromAssetBundle(AudioClip clip)
+    private void PlayImportedAudioClipFromAssetBundle(AudioClip clip)
     {
         _myAudioSourceLoad.clip = clip;
         _myAudioSourceLoad.Play();
