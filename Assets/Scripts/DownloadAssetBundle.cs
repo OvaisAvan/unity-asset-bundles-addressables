@@ -73,6 +73,31 @@ public class DownloadAssetBundle : MonoBehaviour
         return (int)typeWanted;
     }
 
+    private void LoadAssetBundle(CallBack<dynamic, TypeWanted> callbackFunction, string assetBundleName = "")
+    {
+        StartCoroutine(DownloadAssetBundleFromServer(callbackFunction, assetBundleName));
+    }
+
+    private void ActionWantedToAssetBundleLoad(dynamic assetDownload, TypeWanted typeWanted)
+    {
+        switch (typeWanted)
+        {
+            case TypeWanted.Unknown:
+                Debug.LogWarning("Unknown type wanted to asset bundle: " + assetDownload);
+                break;
+            case TypeWanted.GameObject:
+                InstantiateGameObjectFromAssetBundle(assetDownload as GameObject);
+                break;
+            case TypeWanted.Texture2D:
+                ApplyImportedSpriteFromAssetBundle(assetDownload as Sprite);
+                break;
+            case TypeWanted.AudioClip:
+                PlayImportedAudioClipFromAssetBundle(assetDownload as AudioClip);
+                break;
+            case TypeWanted.Sprite:
+                break;
+        }
+    }
     private void ApplyImportedSpriteFromAssetBundle(Sprite sprite)
     {
         _myImageLoad.sprite = sprite;
